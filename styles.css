@@ -1,4 +1,10 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600&display=swap');
+
+:root {
+    --grey-2: #CFCFCF;
+    --grey-5: #878787;
+    --grey-10: #0F0F0F;
+}
 
 * {
     margin: 0;
@@ -11,24 +17,46 @@ body {
     font-family: 'Roboto', Helvetica, sans-serif;
 }
 
+/* Styles for header */
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+}
+
+header > h1 {
+    color: var(--grey-10);
+    font-size: 1.5rem;
+    font-family: 'DM Serif Display';
+}
+
+header > p {
+    color: var(--grey-5);
+    font-weight: 500;
+}
+
+/* Styles for construction */
+
 .construction-gif {
     width: 400px;
     max-width: 100%;
+    margin-bottom: 16px;
 }
 
 .construction-message {
-    margin-top: 24px;
     padding: 12px;
     border-radius: 8px;
-    border: solid 2px #000000;
-    box-shadow: 4px 4px #cacaca;
+    border: solid 2px var(--grey-10);
+    box-shadow: 4px 4px var(--grey-2);
     display: flex;
     align-items: center;
     column-gap: 12px;
 }
 
 .construction-message > p {
-    color: #1f1f1f;
+    color: var(--grey-10);
     line-height: 150%;
 }
 
