@@ -37,9 +37,9 @@ async function getDateTime(locale) {
     let timeRequestUrl;
 
     if (locale === 'nz') {
-        timeRequestUrl = 'http://worldtimeapi.org/api/timezone/Pacific/Auckland';
+        timeRequestUrl = 'https://worldtimeapi.org/api/timezone/Pacific/Auckland';
     } else if (locale === 'aus') {
-        timeRequestUrl = 'http://worldtimeapi.org/api/timezone/Australia/Sydney';
+        timeRequestUrl = 'https://worldtimeapi.org/api/timezone/Australia/Sydney';
     }
 
     const timeJson = await (await fetch(timeRequestUrl)).json();
@@ -57,8 +57,6 @@ async function getDateTime(locale) {
 
 (async () => {
     const locale = await getLocale();
-    console.log(locale);
-
     const dateTime = await getDateTime(locale);
     const emoji = getTimeEmoji(dateTime.time, dateTime.day);
     const hoursString = pad(dateTime.time.hours);
