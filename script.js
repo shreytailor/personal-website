@@ -33,7 +33,7 @@ function getStatus(time, day) {
         status = Status.AT_WORK;
     } else if (time.hours >= 16 && time.hours < 20) {
         return Status.CHILLING;
-    } else if (time.hours > 20 && time.hours < 23) {
+    } else if (time.hours >= 20 && time.hours < 23) {
         status = Status.SLEEPY;
     }
 
