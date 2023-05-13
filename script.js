@@ -1,36 +1,47 @@
-const header = document.getElementsByTagName('header')[0];
-const dateParagraph = header.getElementsByTagName('p')[0];
+const dateParagraph = document.getElementById('time');
+const statusParagraph = document.getElementById('status');
+
+const Status = {
+    SLEEPING: {
+        emoji: '😴',
+        string: 'sleeping'
+    },
+    AT_WORK: {
+        emoji: '👨🏻‍💻',
+        string: 'at work'
+    },
+    CHILLING: {
+        emoji: '😎',
+        string: 'chilling'
+    },
+    SLEEPY: {
+        emoji: '🥱',
+        string: 'sleepy'
+    }
+};
 
 async function getLocale() {
     return await (await fetch('https://mylocale.shreym-tailor5734.workers.dev/')).text();
 }
 
-function getTimeEmoji(time, day) {
-    let emoji;
+function getStatus(time, day) {
+    let status;
 
     if (time.hours >= 23 || time.hours < 8) {
-        emoji = '😴';
+        status = Status.SLEEPING;
     } else if (time.hours >= 8 && time.hours < 16) {
-        emoji = '👨🏻‍💻';
+        status = Status.AT_WORK;
     } else if (time.hours >= 16 && time.hours < 20) {
-        emoji = '😎';
+        return Status.CHILLING;
     } else if (time.hours > 20 && time.hours < 23) {
-        emoji = '🥱';
+        status = Status.SLEEPY;
     }
 
-    if ((day === 0 || day === 6) && emoji === '👨🏻‍💻') {
-        emoji = '😎';
+    if ((day === 0 || day === 6) && status === Status.AT_WORK) {
+        status = Status.CHILLING;
     }
 
-    return emoji;
-}
-
-function pad(value) {
-    if (value < 10) {
-        return `0${value}`;
-    }
-
-    return value;
+    return status;
 }
 
 async function getDateTime(locale) {
@@ -55,11 +66,28 @@ async function getDateTime(locale) {
     };
 }
 
+function pad(value) {
+    if (value < 10) {
+        return `0${value}`;
+    }
+
+    return value;
+}
+
+function getTwelveHourRepresentation(time) {
+    const postfix = time.hours > 12 ? 'pm' : 'am';
+    time.hours = time.hours > 12 ? time.hours % 12 : time.hours;
+    time.minutes = pad(time.minutes);
+    return `${time.hours}:${time.minutes}${postfix}`;
+}
+
 (async () => {
     const locale = await getLocale();
     const dateTime = await getDateTime(locale);
-    const emoji = getTimeEmoji(dateTime.time, dateTime.day);
-    const hoursString = pad(dateTime.time.hours);
-    const minutesString = pad(dateTime.time.minutes);
-    dateParagraph.textContent = `${emoji} ${hoursString}:${minutesString} ${dateTime.locale} time`;
+
+    const status = getStatus(dateTime.time, dateTime.day);
+    const dateTimeString = getTwelveHourRepresentation(dateTime.time);
+
+    dateParagraph.textContent = `${dateTimeString} ${dateTime.locale}`;
+    statusParagraph.textContent = `${status.emoji} ${status.string}`;
 })();

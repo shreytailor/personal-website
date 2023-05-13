@@ -1,9 +1,11 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins:wght@300;400;500;600&display=swap');
 
 :root {
-    --grey-2: #CFCFCF;
-    --grey-5: #878787;
-    --grey-10: #0F0F0F;
+    --grey-2: #d9d9d9;
+    --grey-10: #0D0D0D;
+
+    --purple-1: #F5EEF4;
+    --purple-7: #6F3F65;
 }
 
 * {
@@ -32,9 +34,25 @@ header > h1 {
     font-family: 'DM Serif Display';
 }
 
-header > p {
-    color: var(--grey-5);
+header > div {
+    display: flex;
+    align-items: center;
+    column-gap: 16px;
     font-weight: 500;
+}
+
+#time {
+    color: var(--grey-10);
+}
+
+#status {
+    display: flex;
+    column-gap: 4px;
+    padding: 8px 16px;
+    border-radius: 8px;
+    background-color: var(--purple-1);
+    transition: 1s ease-in-out;
+    color: var(--purple-7)
 }
 
 /* Styles for construction */
