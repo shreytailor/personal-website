@@ -41,6 +41,11 @@ header > div {
   font-weight: 500;
 }
 
+#time,
+#status {
+  display: none;
+}
+
 #time {
   color: var(--grey-10);
 }
