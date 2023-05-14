@@ -77,8 +77,9 @@ function pad(value) {
 }
 
 function getTwelveHourRepresentation(time) {
-  const postfix = time.hours > 12 ? 'pm' : 'am';
+  const postfix = time.hours >= 12 ? 'pm' : 'am';
   time.hours = time.hours > 12 ? time.hours % 12 : time.hours;
+  time.hours = time.hours === 0 ? 12 : time.hours;
   time.minutes = pad(time.minutes);
   return `${time.hours}:${time.minutes}${postfix}`;
 }
@@ -92,4 +93,8 @@ function getTwelveHourRepresentation(time) {
 
   dateParagraph.textContent = `${dateTimeString} ${dateTime.locale}`;
   statusParagraph.textContent = `${status.emoji} ${status.string}`;
+
+  // Showing the paragraph tags after information is loaded.
+  dateParagraph.style.display = 'block';
+  statusParagraph.style.display = 'block';
 })();
