@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.container img {
+  overflow: hidden;
+  object-fit: cover;
+  height: 480px;
+  border: solid 1px #1d1d1d;
+}
+
+.metadataContainer {
+  padding: 8px 0px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  font-family: 'Lora', sans-serif;
+  font-weight: 400;
+  color: #1d1d1d;
+  text-align: center;
+  line-height: 140%;
+  font-size: 1rem;
+}
+
+.metadataContainer p:last-of-type {
+  color: #858585;
+}
+
+@media (min-width: 750px) {
+  .metadataContainer {
+    flex-direction: row;
+    justify-content: space-between;
+  }
+}

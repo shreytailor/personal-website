@@ -17,51 +17,30 @@
       }
     </script>
 
+    <!-- Metadata -->
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-    <!-- Linking to the stylesheet. -->
-    <link rel="stylesheet" href="./styles.css" />
-
-    <!-- Linking to the script. -->
-    <script src="./script.js" defer></script>
-
-    <meta name="theme-color" content="#0F0F0F" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/icons/apple-touch-icon.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="32x32"
-      href="/icons/favicon-32x32.png"
-    />
-    <link
-      rel="icon"
-      type="image/png"
-      sizes="16x16"
-      href="/icons/favicon-16x16.png"
-    />
-    <link rel="manifest" href="/icons/site.webmanifest" />
-    <link rel="mask-icon" href="/icons/safari-pinned-tab.svg" color="#86547f" />
-    <link rel="shortcut icon" href="/icons/favicon.ico" />
-    <meta name="msapplication-TileColor" content="#86547f" />
-    <meta name="msapplication-config" content="/icons/browserconfig.xml" />
-
-    <!-- For SEO. -->
-    <title>Shrey</title>
+    <title>Shrey Tailor</title>
     <meta name="author" content="Shrey Tailor" />
     <meta
       name="keywords"
-      content="software, design, photography, development"
+      content="software, design, photography, development, software design, videography"
     />
     <meta
       name="description"
-      content="I'm Shrey, a Kiwi 🥝 software engineer, enthusiastic for learning new technologies and building to solve real-world problems."
+      content="Building cool software-y things or travelling and taking photos in my free time."
     />
+
+    <!-- Theme and Logos -->
+    <meta name="theme-color" content="#0F0F0F" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+    <link rel="manifest" href="/site.webmanifest" />
+    <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#86547f" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <meta name="msapplication-TileColor" content="#86547f" />
+    <meta name="msapplication-config" content="/browserconfig.xml" />
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
@@ -75,26 +54,7 @@
       </iframe>
     </noscript>
 
-    <!-- Header -->
-    <header>
-      <h1>shrey</h1>
-      <div>
-        <!-- Time will be injected here. -->
-        <p id="time"></p>
-
-        <!-- Status will be injected here. -->
-        <p id="status"></p>
-      </div>
-    </header>
-
-    <!-- Construction -->
-    <img
-      class="construction-gif"
-      src="https://media.tenor.com/v7Z6_aeZ1ocAAAAC/patrick-star-idk.gif"
-    />
-    <div class="construction-message">
-      <p>👷🏼‍♂️</p>
-      <p>This page is under construction - brb shortly...</p>
-    </div>
+    <div id="root"></div>
+    <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
