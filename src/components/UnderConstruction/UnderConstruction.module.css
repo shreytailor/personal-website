@@ -1,0 +1,18 @@
+.container {
+  max-width: 800px;
+  margin: auto;
+  text-align: center;
+  border: 1px solid #1d1d1d;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  row-gap: 8px;
+}
+
+.container > img {
+  width: 100%;
+}
+
+.container > p:last-of-type {
+  font-size: 24px;
+}

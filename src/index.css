@@ -1,0 +1,17 @@
+@import url('https://fonts.googleapis.com/css2?family=Lora&display=swap');
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-size: 16px;
+}
+
+@font-face {
+  font-family: 'Sentic';
+  font-weight: 500;
+  src: url('./assets/fonts/sentic_display_medium.otf') format('opentype');
+}
