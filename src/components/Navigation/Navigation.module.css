@@ -1,0 +1,66 @@
+.expanded {
+  position: fixed;
+  width: 100dvw;
+  height: 100dvh;
+}
+
+.container {
+  font-family: 'Lato', sans-serif;
+  padding: 24px;
+  color: #e4e4e7;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #18181b;
+}
+
+.desktopLayout {
+  min-width: 400px;
+  height: 100dvh;
+}
+
+.permanentContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.expandableContent {
+  margin-top: 24px;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.container h1 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  user-select: none;
+}
+
+.container p {
+  font-size: 1rem;
+  max-width: 240px;
+  margin-bottom: 72px;
+  font-weight: 300;
+  line-height: 1.5rem;
+}
+
+.container li {
+  font-size: 1rem;
+  list-style: none;
+  line-height: 32px;
+  font-weight: 300;
+}
+
+.container img {
+  width: 24px;
+  height: 24px;
+}
+
+.container img:hover {
+  cursor: pointer;
+  filter: brightness(2);
+  transition: 0.5s ease-in-out;
+}

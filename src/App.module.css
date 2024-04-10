@@ -1,8 +1,20 @@
 .container {
   display: flex;
   flex-direction: column;
-  padding: 32px;
-  row-gap: 32px;
-  max-width: 1600px;
-  margin: auto;
+  height: 100dvh;
+}
+
+.pageOutlet {
+  padding: 0px 24px 24px 24px;
+  flex: 1;
+}
+
+@media screen and (min-width: 970px) {
+  .pageOutlet {
+    padding: 24px 24px 24px 0px;
+  }
+
+  .container {
+    flex-direction: row;
+  }
 }
