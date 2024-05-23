@@ -48,7 +48,11 @@ export default function WorkPage({ categories }: WorkPageProps) {
   return (
     <div className={styles.container}>
       {categories.map((category) => (
-        <Link to={category.path} style={{ textDecoration: 'none' }}>
+        <Link
+          key={category.title}
+          to={category.path}
+          style={{ textDecoration: 'none' }}
+        >
           <CategoryCard
             title={category.title}
             coverImage={category.coverImage}
