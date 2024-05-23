@@ -1,0 +1,43 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  row-gap: 16px;
+}
+
+.container h2 {
+  font-family: 'Cormorant Garamond';
+  font-weight: 500;
+  font-size: 2rem;
+}
+
+.grid {
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 32px;
+  width: 100%;
+}
+
+.imageContainer,
+.skeleton {
+  aspect-ratio: 1;
+  width: 100%;
+}
+
+.imageContainer img {
+  object-fit: cover;
+  height: 100%;
+  width: 100%;
+}
+
+@media screen and (min-width: 650px) {
+  .grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media screen and (min-width: 1450px) {
+  .grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

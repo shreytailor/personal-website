@@ -1,20 +1,30 @@
 .container {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  row-gap: 56px;
+  max-width: 1650px;
+  margin: auto;
+  padding-top: 48px;
+  padding-bottom: 120px;
+  min-height: 100dvh;
 }
 
-.pageOutlet {
-  padding: 0px 24px 24px 24px;
+.container,
+.footerPadding {
+  padding-left: 32px;
+  padding-right: 32px;
+}
+
+.footerPadding {
+  padding-top: 64px;
+  padding-bottom: 64px;
   flex: 1;
 }
 
-@media screen and (min-width: 970px) {
-  .pageOutlet {
-    padding: 24px 24px 24px 0px;
-  }
-
-  .container {
-    flex-direction: row;
+@media screen and (min-width: 650px) {
+  .container,
+  .footerPadding {
+    padding-left: 64px;
+    padding-right: 64px;
   }
 }

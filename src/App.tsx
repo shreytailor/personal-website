@@ -6,9 +6,7 @@ function App() {
   return (
     <div className={styles.container}>
       <Navigation />
-      <div className={styles.pageOutlet}>
-        <Outlet />
-      </div>
+      <Outlet />
     </div>
   );
 }

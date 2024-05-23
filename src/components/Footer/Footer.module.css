@@ -1,0 +1,32 @@
+.container {
+  background-color: rgb(73, 113, 238);
+  display: flex;
+  flex-direction: column;
+  row-gap: 12px;
+  align-items: center;
+}
+
+.socialMediaLabel,
+.fishy {
+  font-family: 'Lato';
+  font-weight: 600;
+  color: white;
+}
+
+.socialMediaLabel {
+  font-size: 1rem;
+}
+
+.fishy {
+  font-size: 2rem;
+}
+
+.socialIconContainer {
+  display: flex;
+  column-gap: 8px;
+}
+
+.socialIconContainer img {
+  width: 24px;
+  aspect-ratio: 1;
+}
