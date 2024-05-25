@@ -5,9 +5,9 @@
 }
 
 .container h2 {
-  font-family: 'Cormorant Garamond';
-  font-weight: 500;
-  font-size: 2rem;
+  font-family: 'Lato';
+  font-weight: 600;
+  font-size: 1.2rem;
 }
 
 .grid {
@@ -21,7 +21,6 @@
 .imageContainer,
 .skeleton {
   aspect-ratio: 1;
-  width: 100%;
 }
 
 .imageContainer img {

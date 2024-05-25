@@ -1,8 +1,10 @@
 import Skeleton from 'react-loading-skeleton';
 import styles from './ImageCategoryPage.module.css';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import 'react-loading-skeleton/dist/skeleton.css';
 import useSyntheticDelay from '../../util/useSyntheticDelay';
+import { ImageList, ImageListItem } from '@mui/material';
+import { useScreenWidth } from '../../util/useScreenWidth';
 
 interface ImageCategoryPageProps {
   category: {
@@ -15,10 +17,12 @@ interface ImageCategoryPageProps {
 export default function ImageCategoryPage({
   category,
 }: ImageCategoryPageProps) {
-  category.images.reverse();
-
   const { title, images } = category;
-  const canDisplayImage = useSyntheticDelay(800);
+
+  const canDisplayImages = useSyntheticDelay(1000);
+
+  const screenWidth = useScreenWidth();
+  const masonryColumns = screenWidth > 1200 ? 3 : screenWidth > 500 ? 2 : 1;
 
   useEffect(() => {
     document.documentElement.scrollTo({
@@ -29,19 +33,13 @@ export default function ImageCategoryPage({
 
   const PageTitle = () => <h2>{title}</h2>;
 
-  const Image = ({ src }: { src: string }) => {
-    const [isLoaded, setIsLoaded] = useState(false);
-
+  const ImagesPlaceholder = () => {
     return (
-      <div className={styles.imageContainer}>
-        {(isLoaded && canDisplayImage) || (
-          <Skeleton className={styles.skeleton} />
-        )}
-        <img
-          src={src}
-          style={isLoaded && canDisplayImage ? {} : { display: 'none' }}
-          onLoad={() => setIsLoaded(true)}
-        />
+      <div className={styles.grid}>
+        <Skeleton className={styles.skeleton} />
+        <Skeleton className={styles.skeleton} />
+        <Skeleton className={styles.skeleton} />
+        <Skeleton className={styles.skeleton} />
       </div>
     );
   };
@@ -49,10 +47,18 @@ export default function ImageCategoryPage({
   return (
     <div className={styles.container}>
       <PageTitle />
-      <div className={styles.grid}>
-        {images.map((imageUrl, index) => (
-          <Image key={index} src={imageUrl} />
-        ))}
+      <div>
+        {canDisplayImages ? (
+          <ImageList variant="masonry" cols={masonryColumns} gap={8}>
+            {images.map((imageUrl, index) => (
+              <ImageListItem key={index}>
+                <img src={imageUrl} />
+              </ImageListItem>
+            ))}
+          </ImageList>
+        ) : (
+          <ImagesPlaceholder />
+        )}
       </div>
     </div>
   );
