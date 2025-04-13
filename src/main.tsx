@@ -5,6 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import ImageCategoryPage from './components/ImageCategoryPage';
 import WorkPage from './components/WorkPage/index.tsx';
 import { RootBootstrap } from './types.ts';
+import NotFoundPage from './components/NotFoundPage/index.tsx';
 
 async function getRootBootstrap(): Promise<RootBootstrap> {
   const response = await fetch(
@@ -30,6 +31,7 @@ async function setup() {
             ></Route>
           ))}
         </Route>
+        <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </BrowserRouter>
   );
