@@ -16,6 +16,7 @@
     "@emotion/styled": "^11.11.5",
     "@mui/lab": "^5.0.0-alpha.170",
     "@mui/material": "^5.15.18",
+    "pigeon-maps": "^0.22.1",
     "prop-types": "^15.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
