@@ -25,6 +25,7 @@ export default function ImageCategoryPage({
   const masonryColumns = screenWidth > 1200 ? 3 : screenWidth > 500 ? 2 : 1;
 
   useEffect(() => {
+    document.title = `Shrey Tailor - ${title}`;
     document.documentElement.scrollTo({
       top: 0,
       behavior: 'smooth',

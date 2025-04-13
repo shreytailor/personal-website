@@ -21,6 +21,10 @@ export default function WorkPage({ categories }: WorkPageProps) {
     title: string;
     coverImage: string;
   }) => {
+    useState(() => {
+      document.title = 'Shrey Tailor';
+    })
+    
     const [isHovering, setIsHovering] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const canDisplayImage = useSyntheticDelay(1000);
