@@ -6,12 +6,11 @@
   display: grid;
   grid-template-columns: repeat(1, 1fr);
   gap: 46px;
-  width: 100%;
 }
 
 .container h2 {
-  font-weight: 600;
-  font-size: 1.2rem;
+  font-weight: 500;
+  font-size: 1rem;
   margin-top: 12px;
   color: black;
 }
@@ -22,21 +21,23 @@
   cursor: pointer;
 }
 
-.container div img {
+.container img {
   transition: filter 0.3s ease-in-out;
   object-fit: cover;
   height: 100%;
   width: 100%;
+  border-radius: 16px;
 }
 
 .imageContainer,
 .skeleton {
   aspect-ratio: 1;
   width: 100%;
+  border-radius: 16px;
 }
 
 @media screen and (min-width: 850px) {
   .container {
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }

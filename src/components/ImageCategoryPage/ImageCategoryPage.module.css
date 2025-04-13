@@ -29,6 +29,10 @@
   width: 100%;
 }
 
+.mapContainer {
+  margin-bottom: 48px;
+}
+
 @media screen and (min-width: 650px) {
   .grid {
     grid-template-columns: repeat(2, 1fr);

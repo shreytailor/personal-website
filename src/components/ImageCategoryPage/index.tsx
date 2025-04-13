@@ -5,19 +5,15 @@ import 'react-loading-skeleton/dist/skeleton.css';
 import useSyntheticDelay from '../../util/useSyntheticDelay';
 import { ImageList, ImageListItem } from '@mui/material';
 import { useScreenWidth } from '../../util/useScreenWidth';
-
-interface ImageCategoryPageProps {
-  category: {
-    title: string;
-    coverImage: string;
-    images: string[];
-  };
-}
+import { ImageCategory } from '../../types';
+import { Map, Marker } from 'pigeon-maps';
 
 export default function ImageCategoryPage({
   category,
-}: ImageCategoryPageProps) {
-  const { title, images } = category;
+}: {
+  category: ImageCategory;
+}) {
+  const { title, images, map } = category;
 
   const canDisplayImages = useSyntheticDelay(1000);
 
@@ -48,6 +44,23 @@ export default function ImageCategoryPage({
   return (
     <div className={styles.container}>
       <PageTitle />
+      {map && (
+        <div className={styles.mapContainer}>
+          <Map
+            height={320}
+            defaultCenter={[map.latitude, map.longitude]}
+            defaultZoom={map.zoom || 10}
+          >
+            {map.markers?.map((marker, index) => (
+              <Marker
+                key={index}
+                width={marker.width || 50}
+                anchor={[marker.latitude, marker.longitude]}
+              />
+            ))}
+          </Map>
+        </div>
+      )}
       <div>
         {canDisplayImages ? (
           <ImageList variant="masonry" cols={masonryColumns} gap={8}>
