@@ -1,10 +1,10 @@
-.container h1 {
-  font-weight: 500;
+.name {
+  font-weight: 600;
   font-family: 'Cormorant Garamond';
   font-size: 1.6rem;
 }
 
-.container a {
-  text-decoration: none;
-  color: black;
+.statusContainer {
+  background-color: #eff1ff;
+  color: #7952bd;
 }

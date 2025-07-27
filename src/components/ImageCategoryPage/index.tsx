@@ -28,7 +28,7 @@ export default function ImageCategoryPage({
     });
   }, []);
 
-  const PageTitle = () => <h2>{title}</h2>;
+  const PageTitle = () => <h2 className="text-lg font-semibold">{title}</h2>;
 
   const ImagesPlaceholder = () => {
     return (

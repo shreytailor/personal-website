@@ -4,12 +4,6 @@
   row-gap: 16px;
 }
 
-.container h2 {
-  font-family: 'Lato';
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-
 .grid {
   margin: auto;
   display: grid;

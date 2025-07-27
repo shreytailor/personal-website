@@ -23,8 +23,8 @@ export default function WorkPage({ categories }: WorkPageProps) {
   }) => {
     useState(() => {
       document.title = 'Shrey Tailor';
-    })
-    
+    });
+
     const [isHovering, setIsHovering] = useState(false);
     const [isLoaded, setIsLoaded] = useState(false);
     const canDisplayImage = useSyntheticDelay(1000);
@@ -33,7 +33,7 @@ export default function WorkPage({ categories }: WorkPageProps) {
       <div
         onMouseEnter={() => setIsHovering(true)}
         onMouseLeave={() => setIsHovering(false)}
-        className={styles.imageContainer}
+        className={`flex flex-col gap-2 ${styles.imageContainer}`}
       >
         {(canDisplayImage && isLoaded) || (
           <Skeleton className={styles.skeleton} enableAnimation={true} />
@@ -44,7 +44,7 @@ export default function WorkPage({ categories }: WorkPageProps) {
           onLoad={() => setIsLoaded(true)}
           style={canDisplayImage && isLoaded ? {} : { display: 'none' }}
         />
-        <h2>{title}</h2>
+        <h2 className="font-medium">{title}</h2>
       </div>
     );
   };

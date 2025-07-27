@@ -8,16 +8,8 @@
   gap: 46px;
 }
 
-.container h2 {
-  font-weight: 500;
-  font-size: 1rem;
-  margin-top: 12px;
-  color: black;
-}
-
 .container div {
   width: 100%;
-  font-family: 'Lato';
   cursor: pointer;
 }
 
