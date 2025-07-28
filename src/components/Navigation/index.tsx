@@ -1,21 +1,41 @@
 import { Link } from 'react-router-dom';
 import styles from './Navigation.module.css';
-import { getStatus } from '../../util/status';
+import { getStatus, Status } from '../../util/status';
 import { useScreenWidth } from '../../util/useScreenWidth';
+import { useEffect, useState } from 'react';
 
 export default function Navigation() {
-  const status = getStatus();
   const width = useScreenWidth();
+  const [status, setStatus] = useState<Status | undefined>();
 
-  const Time = () => <p className="text-gray-700">{status.time}</p>;
-  const Status = () => (
-    <p
-      className={`flex gap-2 rounded-lg px-3 py-2 ${styles.statusContainer} items-center`}
-    >
-      <span className={styles.emoji}>{status.emoji}</span>
-      <span>{status.status}</span>
-    </p>
-  );
+  useEffect(() => {
+    getStatus().then(setStatus);
+
+    const updateStatus = setInterval(() => {
+      getStatus().then(setStatus);
+    }, 1000 * 60); // Update status every minute
+
+    return () => clearInterval(updateStatus);
+  }, []);
+
+  const TimeTemp = status
+    ? () => (
+        <p className="text-gray-700">
+          {status?.time} • {status?.temperature}°C
+        </p>
+      )
+    : () => null;
+
+  const Status = status
+    ? () => (
+        <p
+          className={`flex gap-2 rounded-lg px-3 py-2 ${styles.statusContainer} items-center`}
+        >
+          <span className={styles.emoji}>{status?.emoji}</span>
+          <span>{status?.status}</span>
+        </p>
+      )
+    : () => null;
 
   const Name = () => (
     <h1 className={styles.name}>
@@ -29,7 +49,7 @@ export default function Navigation() {
       <div className="flex flex-col gap-2">
         <div className="flex items-center justify-between">
           <Name />
-          <Time />
+          <TimeTemp />
         </div>
         <Status />
       </div>
@@ -42,7 +62,7 @@ export default function Navigation() {
         <Name />
         <Status />
       </div>
-      <Time />
+      <TimeTemp />
     </div>
   );
 }

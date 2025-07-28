@@ -1,10 +1,28 @@
-interface Status {
+export interface Status {
   emoji: string;
   time: string;
   status: string;
+  temperature: number;
 }
 
-export function getStatus(): Status {
+const API_URL =
+  'https://api.open-meteo.com/v1/forecast?latitude=-33.8678&longitude=151.2073&current=temperature_2m&forecast_days=1';
+
+interface WeatherApiResponse {
+  current: {
+    temperature_2m: number;
+  };
+}
+
+function getTemperature(): Promise<number> {
+  return fetch(API_URL)
+    .then((response) => response.json())
+    .then((data: WeatherApiResponse) => data.current.temperature_2m);
+}
+
+export async function getStatus(): Promise<Status> {
+  const temperature = await getTemperature();
+
   const hour = new Date().toLocaleString('en-AU', {
     timeZone: 'Australia/Sydney',
     hour: 'numeric',
@@ -13,13 +31,13 @@ export function getStatus(): Status {
 
   const parsedHour = parseInt(hour, 10);
   const timeSlot =
-    parsedHour > 5 && parsedHour < 12
+    parsedHour >= 6 && parsedHour < 12
       ? 'morning'
-      : parsedHour < 17
+      : parsedHour >= 12 && parsedHour < 17
       ? 'afternoon'
-      : parsedHour < 20
+      : parsedHour >= 17 && parsedHour < 20
       ? 'evening'
-      : parsedHour < 23
+      : parsedHour >= 20 && parsedHour < 23
       ? 'night'
       : 'late';
 
@@ -36,30 +54,35 @@ export function getStatus(): Status {
         emoji: '☀️',
         time: displayableTime,
         status: 'Trying to be productive',
+        temperature,
       };
     case 'afternoon':
       return {
-        emoji: '🐨',
+        emoji: '🧠',
         time: displayableTime,
-        status: 'Productivity peaking',
+        status: 'In the zone',
+        temperature,
       };
     case 'evening':
       return {
-        emoji: '📺',
+        emoji: '🥔',
         time: displayableTime,
-        status: 'Couch mode activated',
+        status: 'Being a couch potato',
+        temperature,
       };
     case 'night':
       return {
         emoji: '🛌',
         time: displayableTime,
         status: 'Thinking about sleep',
+        temperature,
       };
     case 'late':
       return {
         emoji: '🌜',
         time: displayableTime,
         status: 'Probably sleeping',
+        temperature,
       };
     default:
       throw new Error('Invalid time slot');

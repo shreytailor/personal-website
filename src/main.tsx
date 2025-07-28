@@ -1,7 +1,7 @@
 import ReactDOM from 'react-dom/client';
 import App from './App.tsx';
 import './index.css';
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { HashRouter, Route, Routes } from 'react-router-dom';
 import ImageCategoryPage from './components/ImageCategoryPage';
 import WorkPage from './components/WorkPage/index.tsx';
 import { RootBootstrap } from './types.ts';
@@ -19,7 +19,7 @@ async function setup() {
   const { categories } = await getRootBootstrap();
 
   ReactDOM.createRoot(document.getElementById('root')!).render(
-    <BrowserRouter>
+    <HashRouter>
       <Routes>
         <Route path="/" element={<App />}>
           <Route index element={<WorkPage categories={categories} />}></Route>
@@ -33,7 +33,7 @@ async function setup() {
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
