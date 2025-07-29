@@ -1,6 +1,0 @@
-services:
-  personal-website:
-    container_name: personal_website
-    build: .
-    ports:
-      - 8016:5173
